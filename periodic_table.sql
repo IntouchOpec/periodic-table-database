@@ -62,7 +62,7 @@ ALTER TABLE public.elements OWNER TO freecodecamp;
 
 CREATE TABLE public.properties (
     atomic_number integer NOT NULL,
-    atomic_mass numeric(9,6) NOT NULL,
+    atomic_mass real NOT NULL,
     melting_point_celsius numeric NOT NULL,
     boiling_point_celsius numeric NOT NULL,
     type_id integer NOT NULL
@@ -117,29 +117,31 @@ ALTER TABLE ONLY public.types ALTER COLUMN type_id SET DEFAULT nextval('public.t
 --
 
 INSERT INTO public.elements VALUES (1, 'H', 'Hydrogen');
-INSERT INTO public.elements VALUES (2, 'he', 'Helium');
-INSERT INTO public.elements VALUES (3, 'li', 'Lithium');
 INSERT INTO public.elements VALUES (4, 'Be', 'Beryllium');
 INSERT INTO public.elements VALUES (5, 'B', 'Boron');
 INSERT INTO public.elements VALUES (6, 'C', 'Carbon');
 INSERT INTO public.elements VALUES (7, 'N', 'Nitrogen');
 INSERT INTO public.elements VALUES (8, 'O', 'Oxygen');
-INSERT INTO public.elements VALUES (1000, 'mT', 'moTanium');
+INSERT INTO public.elements VALUES (9, 'F', 'Fluorine');
+INSERT INTO public.elements VALUES (10, 'Ne', 'Neon');
+INSERT INTO public.elements VALUES (2, 'He', 'Helium');
+INSERT INTO public.elements VALUES (3, 'Li', 'Lithium');
 
 
 --
 -- Data for Name: properties; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.properties VALUES (1, 1.008000, -259.1, -252.9, 1);
-INSERT INTO public.properties VALUES (8, 15.999000, -218, -183, 1);
-INSERT INTO public.properties VALUES (1000, 1.000000, 10, 100, 1);
-INSERT INTO public.properties VALUES (5, 10.810000, 2075, 4000, 2);
-INSERT INTO public.properties VALUES (6, 12.011000, 3550, 4027, 2);
-INSERT INTO public.properties VALUES (7, 14.007000, -210.1, -195.8, 2);
-INSERT INTO public.properties VALUES (2, 4.002600, -272.2, -269, 3);
-INSERT INTO public.properties VALUES (3, 6.940000, 180.54, 1342, 3);
-INSERT INTO public.properties VALUES (4, 9.012200, 1287, 2470, 3);
+INSERT INTO public.properties VALUES (8, 15.999, -218, -183, 1);
+INSERT INTO public.properties VALUES (5, 10.81, 2075, 4000, 2);
+INSERT INTO public.properties VALUES (6, 12.011, 3550, 4027, 2);
+INSERT INTO public.properties VALUES (7, 14.007, -210.1, -195.8, 2);
+INSERT INTO public.properties VALUES (2, 4.0026, -272.2, -269, 3);
+INSERT INTO public.properties VALUES (3, 6.94, 180.54, 1342, 3);
+INSERT INTO public.properties VALUES (4, 9.0122, 1287, 2470, 3);
+INSERT INTO public.properties VALUES (9, 18.998, -220, -188.1, 2);
+INSERT INTO public.properties VALUES (10, 20.18, -248.6, -246.1, 2);
+INSERT INTO public.properties VALUES (1, 1.008, -259.1, -252.9, 2);
 
 
 --
@@ -164,6 +166,14 @@ SELECT pg_catalog.setval('public.types_type_id_seq', 3, true);
 
 ALTER TABLE ONLY public.elements
     ADD CONSTRAINT elements_atomic_number_key UNIQUE (atomic_number);
+
+
+--
+-- Name: elements elements_atomic_number_key1; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.elements
+    ADD CONSTRAINT elements_atomic_number_key1 UNIQUE (atomic_number);
 
 
 --
