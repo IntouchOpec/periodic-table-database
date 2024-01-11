@@ -1,10 +1,9 @@
 #!/bin/bash
 PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
-echo -e "\n~~~~ Periodic Table ~~~~\n"
 CONDITION=""
 if [[ -z $1 ]] 
 then
-  echo -e "Please provide an element as an argument." 
+  echo Please provide an element as an argument.
   exit
 fi
 
@@ -27,3 +26,4 @@ echo "$RESULT_ELEMENT" | while IFS=" |" read ATOMIC_NUMBER SYMBOL NAME ATOMIC_MA
 do 
   echo -e "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $ATOMIC_MASS amu. $NAME has a melting point of $MELTING celsius and a boiling point of $BOILING celsius."
 done
+
