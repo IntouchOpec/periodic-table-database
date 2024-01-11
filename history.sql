@@ -25,3 +25,4 @@ INSERT INTO properties (atomic_number, atomic_mass, melting_point_celsius, boili
 ALTER TABLE properties ALTER COLUMN atomic_mass TYPE REAL;
 DELETE FROM properties WHERE atomic_number = 1000;
 DELETE FROM elements WHERE atomic_number = 1000;
+UPDATE elements SET symbol = initcap(symbol) WHERE symbol ~ '^[a-z]';
